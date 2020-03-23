@@ -3,13 +3,13 @@ $config = array();
 
 // Begin Configuration
 $config['basedir']     =  '/home/username/public_html';
-$config['baseurl']     =  'http://www.9gagclonescript.com';
+$config['baseurl']     =  't89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
 
 $DBTYPE = 'mysql';
 $DBHOST = 'localhost';
-$DBUSER = 'database_username';
-$DBPASSWORD = 'database_password';
-$DBNAME = 'database_name';
+$DBUSER = 'd112pyg6hfa9qc9y';
+$DBPASSWORD = 'gwltdb2xupgn2vpl';
+$DBNAME = 'up4hkcoab76mr28p';
 
 $default_language = "en"; //You can choose en, fr, de, es, pt, ru or tr
 // End Configuration
