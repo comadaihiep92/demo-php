@@ -7,9 +7,9 @@ $config['baseurl']     =  'https://abc9gag.herokuapp.com/';
 
 $DBTYPE = 'mysql';
 $DBHOST = 'localhost';
-$DBUSER = 'database_username';
-$DBPASSWORD = 'database_password';
-$DBNAME = 'database_name';
+$DBUSER = 'ucab5mh8lx74id29';
+$DBPASSWORD = 'igzal85socvai3wn';
+$DBNAME = 'xhstrxhx7rlxb9bd';
 
 $default_language = "en"; //You can choose en, fr, de, es, pt, ru or tr
 // End Configuration
