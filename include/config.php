@@ -3,10 +3,10 @@ $config = array();
 
 // Begin Configuration
 $config['basedir']     =  '/home/username/public_html';
-$config['baseurl']     =  't89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+$config['baseurl']     =  'https://demo-9gag.herokuapp.com/';
 
 $DBTYPE = 'mysql';
-$DBHOST = 'localhost';
+$DBHOST = 't89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
 $DBUSER = 'd112pyg6hfa9qc9y';
 $DBPASSWORD = 'gwltdb2xupgn2vpl';
 $DBNAME = 'up4hkcoab76mr28p';
