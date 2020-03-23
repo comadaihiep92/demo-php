@@ -3,13 +3,13 @@ $config = array();
 
 // Begin Configuration
 $config['basedir']     =  '/home/username/public_html';
-$config['baseurl']     =  'https://abc9gag.herokuapp.com/';
+$config['baseurl']     =  'http://www.9gagclonescript.com';
 
 $DBTYPE = 'mysql';
 $DBHOST = 'localhost';
-$DBUSER = 'ucab5mh8lx74id29';
-$DBPASSWORD = 'igzal85socvai3wn';
-$DBNAME = 'xhstrxhx7rlxb9bd';
+$DBUSER = 'database_username';
+$DBPASSWORD = 'database_password';
+$DBNAME = 'database_name';
 
 $default_language = "en"; //You can choose en, fr, de, es, pt, ru or tr
 // End Configuration
