@@ -3,7 +3,7 @@ $config = array();
 
 // Begin Configuration
 $config['basedir']     =  '/home/username/public_html';
-$config['baseurl']     =  'http://www.9gagclonescript.com';
+$config['baseurl']     =  'https://abc9gag.herokuapp.com/';
 
 $DBTYPE = 'mysql';
 $DBHOST = 'localhost';
@@ -38,7 +38,7 @@ function strip_mq_gpc($arg)
   	$arg = str_replace('"',"'",$arg);
   	$arg = stripslashes($arg);
     return $arg;
-  } 
+  }
   else
   {
     $arg = str_replace('"',"'",$arg);
@@ -169,7 +169,7 @@ function destroy_slrememberme($username) {
         }
         setcookie ("slrememberme", "", time() - 3600);
 }
-if (!isset($_SESSION["USERNAME"]) && isset($_COOKIE['slrememberme'])) 
+if (!isset($_SESSION["USERNAME"]) && isset($_COOKIE['slrememberme']))
 {
         $sql="update members set remember_me_time=NULL and remember_me_key=NULL WHERE remember_me_time<'".date('Y-m-d H:i:s', mktime(0, 0, 0, date("m")-1, date("d"),   date("Y")))."'";
         $conn->execute($sql);
@@ -187,7 +187,7 @@ if (!isset($_SESSION["USERNAME"]) && isset($_COOKIE['slrememberme']))
 				$error = $lang['225'];
 			}
     		if($error=="")
-			{				
+			{
 				$_SESSION['USERID']=$rs->fields['USERID'];
 				$_SESSION['EMAIL']=$rs->fields['email'];
 				$_SESSION['USERNAME']=$rs->fields['username'];
@@ -201,7 +201,7 @@ if (!isset($_SESSION["USERNAME"]) && isset($_COOKIE['slrememberme']))
         	}
         }
 }
-function generateCode($length) 
+function generateCode($length)
 {
 	$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789";
     $code = "";
@@ -221,7 +221,7 @@ if($config['enable_fc'] == "1")
 		define('FACEBOOK_SECRET', $B);
 		STemplate::assign('FACEBOOK_APP_ID',$A);
 		STemplate::assign('FACEBOOK_SECRET',$B);
-		
+
 		function get_facebook_cookie($app_id, $application_secret) {
 		  $args = array();
 		  parse_str(trim($_COOKIE['fbs_' . $app_id], '\\"'), $args);
@@ -237,7 +237,7 @@ if($config['enable_fc'] == "1")
 		  }
 		  return $args;
 		}
-		
+
 		$code = $_REQUEST['code'];
 		if($code != "")
 		{
@@ -248,17 +248,17 @@ if($config['enable_fc'] == "1")
 			$response = @file_get_contents($token_url);
 			$params = null;
 			parse_str($response, $params);
-			$graph_url = "https://graph.facebook.com/me?access_token=" 
+			$graph_url = "https://graph.facebook.com/me?access_token="
 			. $params['access_token'];
 			$user = json_decode(file_get_contents($graph_url));
 			$fname = htmlentities(strip_tags($user->name), ENT_COMPAT, "UTF-8");
 			$femail = htmlentities(strip_tags($user->email), ENT_COMPAT, "UTF-8");
-			
+
 			$query="SELECT USERID FROM members WHERE email='".mysql_real_escape_string($femail)."' limit 1";
 			$executequery=$conn->execute($query);
 			$FUID = intval($executequery->fields['USERID']);
 			if($FUID > 0)
-			{									
+			{
 				$query="SELECT USERID,email,username,verified, filter from members WHERE USERID='".mysql_real_escape_string($FUID)."' and status='1'";
 				$result=$conn->execute($query);
 				if($result->recordcount()>0)
@@ -270,14 +270,14 @@ if($config['enable_fc'] == "1")
 					$_SESSION['USERNAME']=$result->fields['username'];
 					$_SESSION['VERIFIED']=$result->fields['verified'];
 					$_SESSION['FILTER']=$result->fields['filter'];
-					$_SESSION['FB']="1";			
+					$_SESSION['FB']="1";
 					header("Location:$config[baseurl]/");exit;
 				}
 			}
 			else
 			{
 				$md5pass = md5(generateCode(5).time());
-				
+
 				if($fname != "" && $femail != "")
 				{
 					$query="INSERT INTO members SET email='".mysql_real_escape_string($femail)."',username='', password='".mysql_real_escape_string($md5pass)."', addtime='".time()."', lastlogin='".time()."', ip='".$_SERVER['REMOTE_ADDR']."', lip='".$_SERVER['REMOTE_ADDR']."', verified='1'";
@@ -287,7 +287,7 @@ if($config['enable_fc'] == "1")
 					{
 						$query="SELECT USERID,email,verified, filter from members WHERE USERID='".mysql_real_escape_string($userid)."'";
 						$result=$conn->execute($query);
-						
+
 						$SUSERID = $result->fields['USERID'];
 						$SEMAIL = $result->fields['email'];
 						$SVERIFIED = $result->fields['verified'];
@@ -296,7 +296,7 @@ if($config['enable_fc'] == "1")
 						$_SESSION['EMAIL']=$SEMAIL;
 						$_SESSION['VERIFIED']=$SVERIFIED;
 						$_SESSION['FILTER']=$SFILTER;
-						$_SESSION['FB']="1";				
+						$_SESSION['FB']="1";
 						header("Location:$config[baseurl]/connect.php");exit;
 					}
 				}
@@ -314,9 +314,9 @@ if($config['enable_fc'] == "1")
 			  else $pageURL .= $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 		 }
 		 return $pageURL;
-	} 
+	}
 	if($_SESSION['USERNAME'] == "" && $_SESSION['FB'] == "1")
-	{	
+	{
 		$url = getCurrentPageUrl();
 		$myurl = $config['baseurl']."/connect.php";
 		$cssurl = $config['baseurl']."/css/connect.css";
